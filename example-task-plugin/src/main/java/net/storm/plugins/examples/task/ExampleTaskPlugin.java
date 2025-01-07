@@ -1,8 +1,10 @@
 package net.storm.plugins.examples.task;
 
 import com.google.inject.Inject;
+import com.google.inject.Provides;
 import net.storm.api.plugins.PluginDescriptor;
 import net.storm.api.plugins.Task;
+import net.storm.api.plugins.config.ConfigManager;
 import net.storm.plugins.examples.task.tasks.AttackNpc;
 import net.storm.plugins.examples.task.tasks.EatFood;
 import net.storm.sdk.plugins.TaskPlugin;
@@ -35,5 +37,10 @@ public class ExampleTaskPlugin extends TaskPlugin {
                 new EatFood(config), // task order is important here, if the first task validates, it will block the execution of the next tasks
                 new AttackNpc(config),
         };
+    }
+
+    @Provides
+    public ExampleTaskConfig provideConfig(ConfigManager configManager) {
+        return configManager.getConfig(ExampleTaskConfig.class);
     }
 }

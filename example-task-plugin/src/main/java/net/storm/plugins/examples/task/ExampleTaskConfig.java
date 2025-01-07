@@ -9,7 +9,7 @@ import net.storm.api.plugins.config.ConfigItem;
 @ConfigGroup(ExampleTaskConfig.GROUP)
 @SoxExclude // Exclude from obfuscation
 public interface ExampleTaskConfig extends Config {
-    String GROUP = "example-looped-plugin";
+    String GROUP = "example-task-plugin";
 
     @ConfigItem(
             keyName = "npcName",
