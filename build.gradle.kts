@@ -26,7 +26,7 @@ subprojects {
         mavenLocal()
         maven("https://repo.runelite.net")
         maven {
-            url = uri("https://maven.pkg.github.com/stormsoftwarenet/storm2-sdk")
+            url = uri("https://maven.pkg.github.com/stormsoftwarenet/storm2-public-sdk")
         }
     }
 
