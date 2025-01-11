@@ -16,5 +16,5 @@ lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
 guice = { module = "com.google.inject:guice", version.ref = "guice" }
 pf4j = { module = "org.pf4j:pf4j", version.ref = "pf4j" }
 javax-annotation = { module = "javax.annotation:javax.annotation-api", version.ref = "javax-annotation" }
-storm-api = { module = "net.storm2:storm-api", version.ref = "storm-api" }
-storm-sdk = { module = "net.storm2:storm-sdk", version.ref = "storm-sdk" }
+storm-api = { module = "net.storm:storm-api", version.ref = "storm-api" }
+storm-sdk = { module = "net.storm:storm-sdk", version.ref = "storm-sdk" }

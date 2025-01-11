@@ -23,10 +23,16 @@ subprojects {
 
     repositories {
         mavenCentral()
-        mavenLocal()
         maven("https://repo.runelite.net")
         maven {
             url = uri("https://maven.pkg.github.com/stormsoftwarenet/storm2-public-sdk")
+            authentication {
+                create<BasicAuthentication>("basic")
+            }
+            credentials {
+                username = ""
+                password = System.getenv("GITHUB_PACKAGES_PAT")
+            }
         }
     }
 
