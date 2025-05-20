@@ -4,7 +4,8 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 include(
     "example-looped-plugin",
-    "example-task-plugin",
+    "JG-example-plugin",
+    "JG-tutorial-island",
 )
 
 for (project in rootProject.children) {
