@@ -17,7 +17,6 @@ import net.storm.api.domain.tiles.ITileObject;
 public class BankerStep implements TutorialStep {
     private final JGTutorialIslandPlugin plugin;
 
-    // TODO: Replace all these with real IDs and coords
     private static final int BANK_BOOTH_ID = 10083;
     private static final int POLL_BOOTH_ID = 26815;
     private static final int ACCOUNT_GUIDE_ID = 3310;
