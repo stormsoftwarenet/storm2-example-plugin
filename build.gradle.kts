@@ -30,7 +30,7 @@ subprojects {
                 create<BasicAuthentication>("basic")
             }
             credentials {
-                username = ""
+                username = "JG"
                 password = System.getenv("GITHUB_PACKAGES_PAT")
             }
         }
