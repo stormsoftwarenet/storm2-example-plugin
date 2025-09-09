@@ -4,10 +4,10 @@ import com.google.inject.Inject;
 import com.google.inject.Provides;
 import net.storm.api.plugins.PluginDescriptor;
 import net.storm.api.plugins.Task;
+import net.storm.api.plugins.TaskPlugin;
 import net.storm.api.plugins.config.ConfigManager;
 import net.storm.plugins.examples.task.tasks.AttackNpc;
 import net.storm.plugins.examples.task.tasks.EatFood;
-import net.storm.sdk.plugins.TaskPlugin;
 import org.pf4j.Extension;
 
 /*

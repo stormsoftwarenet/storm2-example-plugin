@@ -1,21 +1,15 @@
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import com.savvasdalkitsis.jsonmerger.JsonMerger
 import groovy.json.JsonOutput
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
 import org.gradle.kotlin.dsl.extra
-import org.gradle.kotlin.dsl.get
-import org.json.JSONObject
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileReader
-import java.io.FileWriter
 import java.nio.file.Paths
 import java.security.MessageDigest
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 open class BootstrapTask : DefaultTask() {
 
@@ -45,8 +39,8 @@ open class BootstrapTask : DefaultTask() {
             bootstrapReleaseDir.mkdirs()
 
             val bootstrapMap = getBootstrap("$bootstrapDir/plugins.json")
-                    .associateBy { it.id }
-                    .toMutableMap()
+                .associateBy { it.id }
+                .toMutableMap()
 
             project.subprojects.forEach {
                 if (it.project.properties.containsKey("PluginName") && it.project.properties.containsKey("PluginDescription")) {
@@ -54,11 +48,11 @@ open class BootstrapTask : DefaultTask() {
 
                     val sha512 = hash(pluginFile.readBytes())
                     val release = Bootstrap.Release(
-                            version = it.project.version as String,
-                            requires = "^1.0.0",
-                            date = formatDate(Date()),
-                            url = "https://raw.githubusercontent.com/$githubUri/${it.project.name}-${it.project.version}.jar",
-                            sha512sum = sha512
+                        version = it.project.version as String,
+                        requires = "^1.0.0",
+                        date = formatDate(Date()),
+                        url = "https://raw.githubusercontent.com/$githubUri/${it.project.name}-${it.project.version}.jar",
+                        sha512sum = sha512
                     )
 
                     val id = nameToId(it.project.extra.get("PluginName") as String)
@@ -72,18 +66,19 @@ open class BootstrapTask : DefaultTask() {
                         }
                     } else {
                         bootstrapMap[id] = Bootstrap(
-                                name = it.project.extra.get("PluginName") as String,
-                                id = id,
-                                description = it.project.extra.get("PluginDescription") as String,
-                                provider = it.project.extra.get("PluginProvider") as String,
-                                projectUrl = it.project.extra.get("ProjectSupportUrl") as String,
-                                releases = mutableListOf(release)
+                            name = it.project.extra.get("PluginName") as String,
+                            id = id,
+                            description = it.project.extra.get("PluginDescription") as String,
+                            provider = it.project.extra.get("PluginProvider") as String,
+                            projectUrl = it.project.extra.get("ProjectSupportUrl") as String,
+                            releases = mutableListOf(release)
                         )
                     }
 
                     pluginFile.copyTo(
-                            Paths.get(bootstrapReleaseDir.toString(), "${it.project.name}-${it.project.version}.jar").toFile(),
-                            overwrite = true
+                        Paths.get(bootstrapReleaseDir.toString(), "${it.project.name}-${it.project.version}.jar")
+                            .toFile(),
+                        overwrite = true
                     )
                 }
             }
@@ -97,19 +92,19 @@ open class BootstrapTask : DefaultTask() {
     }
 
     data class Bootstrap(
-            val projectUrl: String,
-            val provider: String,
-            val name: String,
-            val description: String,
-            val id: String,
-            val releases: MutableList<Release>
+        val projectUrl: String,
+        val provider: String,
+        val name: String,
+        val description: String,
+        val id: String,
+        val releases: MutableList<Release>
     ) {
         data class Release(
-                val date: String,
-                val sha512sum: String,
-                val version: String,
-                val url: String,
-                val requires: String
+            val date: String,
+            val sha512sum: String,
+            val version: String,
+            val url: String,
+            val requires: String
         )
     }
 }

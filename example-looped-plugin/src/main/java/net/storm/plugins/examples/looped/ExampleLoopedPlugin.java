@@ -2,13 +2,13 @@ package net.storm.plugins.examples.looped;
 
 import com.google.inject.Inject;
 import com.google.inject.Provides;
+import net.storm.api.plugins.LoopedPlugin;
 import net.storm.api.plugins.PluginDescriptor;
 import net.storm.api.plugins.config.ConfigManager;
 import net.storm.sdk.entities.NPCs;
 import net.storm.sdk.entities.Players;
 import net.storm.sdk.game.Combat;
 import net.storm.sdk.items.Inventory;
-import net.storm.sdk.plugins.LoopedPlugin;
 import org.pf4j.Extension;
 
 /*
@@ -26,7 +26,7 @@ public class ExampleLoopedPlugin extends LoopedPlugin {
     private ExampleLoopedConfig config;
 
     @Override
-    protected int loop() {
+    public int loop() {
         if (config.eatFood() && Combat.getHealthPercent() < config.foodHp()) {
             var food = Inventory.getFirst(config.foodName());
             if (food != null) {

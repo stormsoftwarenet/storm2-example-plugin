@@ -1,7 +1,8 @@
 version = "0.0.1"
 
 project.extra["PluginName"] = "Example Looped Plugin"
-project.extra["PluginDescription"] = "A type of plugin of which the plugin logic is contained within a single 'loop' function"
+project.extra["PluginDescription"] =
+    "A type of plugin of which the plugin logic is contained within a single 'loop' function"
 
 tasks {
     jar {
